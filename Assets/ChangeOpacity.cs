@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeOpacity : MonoBehaviour
-{
+{/*
     public GameObject currentGameObject;
     public float alpha = 0.5f;
     private Material currentMaterial;
@@ -28,4 +28,4 @@ public class ChangeOpacity : MonoBehaviour
     {
         ChangeAlpha(currentMaterial, slider.Value);
     }
-}
+*/}

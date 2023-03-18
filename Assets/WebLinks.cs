@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WebLinks : MonoBehaviour
-{
+{/*
     public void Hololink()
     {
         Application.OpenURL("http://hololens.com/");
@@ -13,4 +13,4 @@ public class WebLinks : MonoBehaviour
     {
         Application.OpenURL(link);
     }
-}
+*/}
