@@ -17,6 +17,7 @@ public class LabelCreator : MonoBehaviour
     public Transform Position;
     public Transform Parent;
     GameObject Target;
+    Color temp;
 
 
     private void Start()
@@ -44,22 +45,22 @@ public class LabelCreator : MonoBehaviour
         Target.transform.position = Position.transform.position;
         Target.GetComponent<BoxCollider>().enabled = false;
         Vector3 temp = Target.GetComponent<Transform>().localScale;
-        temp.x = Scale ;
-        temp.y = Scale ;
-        temp.z = Scale ;
+        temp.x = Scale;
+        temp.y = Scale;
+        temp.z = Scale;
         Target.GetComponent<Transform>().localScale = temp;
 
     }
     public void CreateExclamationMark()
     {
-        if(Target != null) { GameObject.Destroy(Target); }
+        if (Target != null) { GameObject.Destroy(Target); }
         Target = Instantiate(ExclamationMarkPrefab, Position.transform);
         Target.transform.position = Position.transform.position;
         Target.GetComponent<BoxCollider>().enabled = false;
         Vector3 temp = Target.GetComponent<Transform>().localScale;
-        temp.x = Scale ;
-        temp.y = Scale ;
-        temp.z = Scale ;
+        temp.x = Scale;
+        temp.y = Scale;
+        temp.z = Scale;
         Target.GetComponent<Transform>().localScale = temp;
     }
 
@@ -72,7 +73,7 @@ public class LabelCreator : MonoBehaviour
     }
 
     public void ChangeScale(PinchSlider pinch)
-    { 
+    {
         Scale = (pinch.SliderValue + 0.01f) / 3;
         Vector3 temp = Target.GetComponent<Transform>().localScale;
         temp.x = Scale;
@@ -80,7 +81,7 @@ public class LabelCreator : MonoBehaviour
         temp.z = Scale;
         Transform t = Target.GetComponent<Transform>();
         t.localScale = temp;
-        t.position = new Vector3 (t.position.x, Position.position.y + Scale, t.position.z);
+        t.position = new Vector3(t.position.x, Position.position.y + Scale, t.position.z);
     }
 
     public void ChangeColor(string i)
@@ -122,11 +123,62 @@ public class LabelCreator : MonoBehaviour
             }
             Color = temp.color;
         }
+
+        else
+        {
+
+            switch (i)
+            {
+                case "green":
+                    temp = Color.green;
+                    break;
+                case "red":
+                    temp = Color.red;
+                    break;
+                case "blue":
+                    temp = Color.blue;
+                    break;
+                case "white":
+                    temp = Color.white;
+                    break;
+                case "black":
+                    temp = Color.black;
+                    break;
+                case "yellow":
+                    temp = Color.yellow;
+                    break;
+                case "gray":
+                    temp = Color.gray;
+                    break;
+                case "cyan":
+                    temp = Color.cyan;
+                    break;
+                case "magenta":
+                    temp = Color.magenta;
+                    break;
+            }
+            GetComponentInChildren<Renderer>().material.SetColor("_Color", temp);
+        }
     }
 
     public void ChangeText(string s)
     {
         Target.GetComponent<TMP_Text>().text = s;
+    }
+
+    public void ToggleHighlight()
+    {
+        if (Target.GetComponent<TMP_Text>())
+        {
+            if (Target.GetComponent<TMP_Text>().fontStyle == FontStyles.Underline)
+            {
+                Target.GetComponent<TMP_Text>().fontStyle = FontStyles.Normal;
+            }
+            else 
+            {
+                Target.GetComponent<TMP_Text>().fontStyle = FontStyles.Underline;
+            }
+        }
     }
 
     public void UI()
