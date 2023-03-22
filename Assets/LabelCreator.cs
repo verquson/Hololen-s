@@ -110,6 +110,15 @@ public class LabelCreator : MonoBehaviour
                 case "yellow":
                     temp.color = Color.yellow;
                     break;
+                case "gray":
+                    temp.color = Color.gray;
+                    break;
+                case "cyan":
+                    temp.color = Color.cyan;
+                    break;
+                case "magenta":
+                    temp.color = Color.magenta;
+                    break;
             }
             Color = temp.color;
         }
